@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuestAuto Sales</title>
+    <link rel="icon" href="../public/images/favicon.ico"/>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<!--NavBar-->
+<div class='navbar navbar_active flexBetween'>
+    <div class="navbar__wrapper container flexBetween">
+        <a href="index.html" class="navbar__logo flexCenter">
+            <img
+                    src="../public/images/logo.png"
+                    alt="logo"
+                    class="navbar__logoImg"
+            />
+            <p class="navbar__logoText">
+                Quest<span class='blueText'>Auto</span>
+            </p>
+        </a>
+        <div class="navbar__menuBlock flexCenter">
+            <nav class="navbar__menu flexCenter">
+                <a href="index.html" class="navbar__menuLink">HOME</a>
+                <a href="cars.html" class="navbar__menuLink navbar__menuLink_active">CARS</a>
+                <a href="about.html" class="navbar__menuLink">ABOUT</a>
+            </nav>
+            <div class="navbar__searchBlock flexCenter">
+                <input
+                        type="search"
+                        id="brand-search"
+                        placeholder="Search Brand..."
+                        class="navbar__searchbar"
+                >
+                <button class="navbar__searchBtn">
+                    <i class='bx bx-search' id="search-icon"></i>
+                </button>
+
+            </div>
+            <div class="navbar__basketBlock">
+                <button class="navbar__basketBtn flexCenter">
+                    <img
+                            src="../public/images/basket.png"
+                            alt="basket"
+                            class="navbar__basketImg"
+                    >
+                    <p class="navbar__basketCountText flexCenter hidden">5</p>
+                </button>
+
+                <!--BASKET-->
+                <div class="basketModal hidden">
+                    <div class="basketModal__container">
+
+                    </div>
+                    <p class="basketModal__totalPriceTxt"><strong>Total:</strong> <span id="totalPrice">0 $</span></p>
+                    <div class="basketModal__emptyBlock flexCenter hidden">
+                        <p class="basketModal__emptyTxt">Empty</p>
+                    </div>
+                    <button class="basketModal__reserveBtn reserveBtn">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navbar__distance"></div>
+
+
+<div class="container">
+    <!--MAIN-->
+    <div class="carsMain">
+        <h2 class="titleTxt centred">What We Offer</h2>
+        <h4 class="subtitleTxt centred">Journy To Your Dream Car</h4>
+        <p class="contentTxt centred">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugit <br/>sint
+            ipsum perserferendis ducimus.</p>
+    </div>
+
+    <!--FILTERS-->
+    <section class="carsFilter" id="carsFilter">
+        <h2 class="subtitleTxt centred">Car filter</h2>
+        <form id="carFilterContainer" class="carsFilter__container flexCenter">
+            <select class="carsFilter__field" name="Make" id="make-select">
+                <option value=""></option>
+            </select>
+            <select class="carsFilter__field" name="Model" id="model-select">
+
+            </select>
+            <input
+                    class="carsFilter__field"
+                    type="number"
+                    placeholder="'price"
+                    id="price-select"
+            >
+            <select class="carsFilter__field" name="Color" id="color-select">
+
+            </select>
+            <select class="carsFilter__field" name="Body Type" id="bodyType-select">
+
+            </select>
+            <button type="submit" class="carsFilter__btn carsFilter__submitBtn" id="filter-btn">Filter</button>
+            <button type="reset" class="carsFilter__btn carsFilter__cancelBtn" id="cancel-btn">Clear</button>
+        </form>
+    </section>
+
+    <!--CARS LIST-->
+    <div class="carsList" id="carListContainer">
+    </div>
+</div>
+
+<!--RESERVE MODAL-->
+<div id="reservationModal" style="display: none">
+    <div class="backdrop"></div>
+    <div
+            class="carsList__reserveModal flexCenter"
+    >
+        <button class="crossBtn" id="reserve-close-button">&times;</button>
+        <h3 class="carsList__reserveModalTitle">Reservation Confirmed</h3>
+        <p class="carsList__reserveModalText">
+            Your car has been reserved successfully! <br/>
+            <span class='yellowTxt'></span>Go to Quest<span class="blueText">Auto</span> <span
+                class="yellowTxt">dealership to pick up your car.</span>
+        </p>
+    </div>
+</div>
+
+<!--Car Details Modal-->
+<div id="viewDetailsModal" style="display: none">
+    <div class="backdrop"></div>
+    <div
+            class="carsListModal scrollbarDef"
+    >
+        <button class="crossBtn detailsCloseButton">&times;</button>
+        <h3 id="carMakeText" class="carsListModal__carNameText"></h3>
+        <img
+                src=""
+                alt="car"
+                crossorigin="anonymous"
+                id="carImg" class="carsListModal__img"
+        />
+        <h3 id="carPriceText" class="carsListModal__priceText"></h3>
+        <p id="carDescriptionText" class="carsListModal__descriptionText"></p>
+        <h3 class="carsListModal__featuresTitle">Features</h3>
+        <p class="carsListModal__featuresText" id="carFeaturesText">
+        </p>
+        <br/>
+        <button class="mainBtn addToBasketBtn">Add to card</button>
+    </div>
+</div>
+
+<!--Footer-->
+<footer class="footer">
+    <div class="footer__container container">
+        <a class="footer__logoText">Quest<span class='blueText'>Auto</span></a>
+        <div class="footer__col">
+            <h6 class="footer__colTitle">Page</h6>
+            <a href="#" class="footer__link">Home</a>
+            <a href="#" class="footer__link">Cars</a>
+            <a href="#" class="footer__link">About</a>
+
+        </div>
+        <div class="footer__col">
+            <h6 class="footer__colTitle">Legal</h6>
+            <a href="#" class="footer__link">Privacy</a>
+            <a href="#" class="footer__link">Refund Policy</a>
+            <a href="#" class="footer__link">Cookie Policy</a>
+
+        </div>
+        <div class="footer__col">
+            <h6 class="footer__colTitle">Contact</h6>
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86094.91593870707!2d-122.23353198487044!3d47.597625445468935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906bcfa3a66041%3A0xbacf5482ead00765!2sBellevue%2C%20WA!5e0!3m2!1sen!2sus!4v1708891840476!5m2!1sen!2sus"
+                    allowFullScreen="" loading="lazy" class='footer__map'
+                    referrerPolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</footer>
+
+<script src="../public/scripts/main.js" type="module"></script>
+<script src="../public/scripts/cars.js" type="module"></script>
+
+</body>
+</html>

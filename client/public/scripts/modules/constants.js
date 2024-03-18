@@ -1,0 +1,1 @@
+export const bodyTypes = ['Sedan','SUV','Coupe']
